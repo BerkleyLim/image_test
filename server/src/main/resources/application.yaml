@@ -14,5 +14,11 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/image?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false
-    username: postgres
+    username:
+#    username: postgres
     password:
+
+  servlet:
+    multipart:
+      maxFileSize: 24MB # 1080 * 1053 * 3 = 3.41172MB / 1000 * 8000 * 3 = 24 MB
+      maxRequestSize: 30MB
