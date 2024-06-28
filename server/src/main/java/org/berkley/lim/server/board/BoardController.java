@@ -3,6 +3,7 @@ package org.berkley.lim.server.board;
 
 import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
+import org.berkley.lim.server.board.dto.BoardDTO;
 import org.berkley.lim.server.board.entity.Board;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,11 @@ import java.util.List;
 @RequestMapping("/api/board")
 public class BoardController {
 
-//    @PostMapping(value="image-upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    /**
+     * 이미지 보내기 테스트 진행
+     * @param profileImage : 이미지 받기
+     * @return : 결과 실시
+     */
     @PostMapping("image-upload")
     public Board uploadImageFile(
             @RequestPart(value = "profileImage", required = false) @Valid MultipartFile profileImage
@@ -34,5 +39,13 @@ public class BoardController {
                 .bno(1L)
                 .profileImageId("")
                 .build();
+    }
+
+    @PostMapping("admin-form")
+    public void doRegisterAdminUser(
+            @RequestPart(value = "profileImage", required = false) @Valid MultipartFile profileImage,
+            @RequestPart(value = "adminFormDTO") @Valid BoardDTO boardDTO
+            ) {
+
     }
 }
